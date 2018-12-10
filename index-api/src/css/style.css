@@ -163,3 +163,21 @@ body,
   display: flex;
   flex-direction: column;
 }
+
+.wrap .content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list {
+  width: 50%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.active {
+  color: #f71a25;
+}

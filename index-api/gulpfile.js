@@ -4,6 +4,6 @@ gulp.task('server', function() {
     return gulp.src('./src')
         .pipe(server({
             port: 9090,
-            porxies: [{ source: '/users', target: 'http://localhost:3000/users' }]
+            proxies: [{ source: '/users', target: 'http://localhost:3000/users' }]
         }))
 })

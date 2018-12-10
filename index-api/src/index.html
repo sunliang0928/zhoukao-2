@@ -10,7 +10,31 @@
 </head>
 
 <body>
-
+    <ul class="list">
+        <li class="active myaidou">我的爱豆</li>
+        <li>所有爱豆</li>
+        <li>饭圈大咖</li>
+    </ul>
+    <div class="wrap">
+        <div class="content">
+            <li>
+                <img src="" alt="">
+                <p></p>
+            </li>
+        </div>
+    </div>
+    <script src="./js/jquery-3.1.1.min.js"></script>
+    <script>
+        $('.myaidou').on('click', function() {
+            $.ajax({
+                url: '/users',
+                dataType: 'json',
+                success: function(res) {
+                    console.log(res)
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
