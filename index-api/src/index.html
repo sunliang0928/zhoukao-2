@@ -12,27 +12,53 @@
 <body>
     <ul class="list">
         <li class="active myaidou">我的爱豆</li>
-        <li>所有爱豆</li>
+        <li class="btn2">所有爱豆</li>
         <li>饭圈大咖</li>
     </ul>
     <div class="wrap">
         <div class="content">
-            <li>
-                <img src="" alt="">
-                <p></p>
+            <!-- <li>
+                <img src="./img/1.png" alt="">
+                <p>天猫双十一大家准备买什么？上特步官方旗舰店网页...</p>
             </li>
+            <li>
+                <img src="./img/1.png" alt="">
+                <p>天猫双十一大家准备买什么？上特步官方旗舰店网页...</p>
+            </li> -->
         </div>
     </div>
     <script src="./js/jquery-3.1.1.min.js"></script>
     <script>
-        $('.myaidou').on('click', function() {
+        ajax('/users', 'get');
+
+        function ajax(url, type) {
             $.ajax({
-                url: '/users',
+                url: url,
+                type: type,
                 dataType: 'json',
                 success: function(res) {
-                    console.log(res)
+                    var url = 'http://localhost:9090/img/'
+                    var str = '';
+                    res.msg.forEach(function(item) {
+                        str += ` <li>
+                                <img src="${url}${item.img}" alt="">
+                                <p>${item.content}</p>
+                            </li>`
+                    })
+                    $('.content').html($(str));
                 }
             })
+        }
+
+        $('.myaidou').on('click', function() {
+            $(this).addClass('active').siblings().removeClass('active');
+            ajax('/users', 'get');
+        })
+
+
+        $('.btn2').on('click', function() {
+            $(this).addClass('active').siblings().removeClass('active')
+            ajax('/users/api/aidou', 'get');
         })
     </script>
 </body>

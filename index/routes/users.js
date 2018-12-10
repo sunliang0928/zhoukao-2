@@ -11,5 +11,13 @@ router.get('/', function(req, res, next) {
         }
     })
 });
-
+router.get('/api/aidou', function(req, res, next) {
+    mysqls('select * from suoyouaidou', [], function(err, result) {
+        if (err) {
+            res.json({ code: 0, msg: err })
+        } else {
+            res.json({ code: 1, msg: result })
+        }
+    })
+});
 module.exports = router;
